@@ -1,0 +1,152 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module openCVSS-1_3</title>
+<style type="text/css"><!--
+TT { font-family: lucidatypewriter, lucida console, courier }
+--></style></head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#7799ee">
+<td valign=bottom><small>&nbsp;<br></small
+><font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>openCVSS-1_3</strong></big></big> (version 1.3, 12/16/08)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///C|/users/bdixon/desktop/cvss-parser/opencvss-1_3.py">c:\users\bdixon\desktop\cvss-parser\opencvss-1_3.py</a></font></td></tr></table>
+    <p><small></small></p>
+
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><small><a href="openCVSS-1_3.html#Struct">Struct</a>
+</small></font></dt><dt><font face="helvetica, arial"><small><a href="openCVSS-1_3.html#openCVSS">openCVSS</a>
+</small></font></dt></dl>
+ 
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#000000" face="helvetica, arial"><a name="Struct">class <strong>Struct</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><small><tt>Allows&nbsp;for&nbsp;the&nbsp;creations&nbsp;of&nbsp;enums&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Thanks&nbsp;to&nbsp;norvig.com/python-iaq.html<br>&nbsp;</tt></small></td></tr>
+<tr><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="Struct-__init__"><strong>__init__</strong></a>(self, **entries)</dl>
+</td></tr></table> 
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#000000" face="helvetica, arial"><a name="openCVSS">class <strong>openCVSS</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><small><tt><a href="#openCVSS">openCVSS</a>&nbsp;class&nbsp;consisting&nbsp;of&nbsp;2&nbsp;core&nbsp;functions<br>
+1&nbsp;function&nbsp;will&nbsp;take&nbsp;all&nbsp;the&nbsp;arguments&nbsp;in&nbsp;and&nbsp;the&nbsp;other&nbsp;will&nbsp;calculate&nbsp;the&nbsp;score&nbsp;based&nbsp;on&nbsp;those&nbsp;arguments<br>&nbsp;</tt></small></td></tr>
+<tr><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="openCVSS-__init__"><strong>__init__</strong></a>(self)<dd><small><tt>Define&nbsp;the&nbsp;global&nbsp;variables&nbsp;and&nbsp;create&nbsp;enums&nbsp;to&nbsp;store&nbsp;variables&nbsp;in&nbsp;a&nbsp;clean&nbsp;fashion</tt></small></dl>
+<dl><dt><a name="openCVSS-calcAdjustedBaseScore"><strong>calcAdjustedBaseScore</strong></a>(self)<dd><small><tt>Calculates&nbsp;the&nbsp;AdjustedBaseScore&nbsp;and&nbsp;then&nbsp;calls&nbsp;setAdjustedBaseScore</tt></small></dl>
+<dl><dt><a name="openCVSS-calcAdjustedImpactScore"><strong>calcAdjustedImpactScore</strong></a>(self)<dd><small><tt>Calculates&nbsp;the&nbsp;AdjustedImpactScore&nbsp;and&nbsp;then&nbsp;calls&nbsp;setAdjustedImpactScore<br>
+AdjustedImpact&nbsp;=&nbsp;Min(10,&nbsp;10.41*(1-(1-ConfImpact*ConfReq)*(1-IntegImpact*IntegReq)*(1-AvailImpact*AvailReq)))</tt></small></dl>
+<dl><dt><a name="openCVSS-calcAdjustedTemporalScore"><strong>calcAdjustedTemporalScore</strong></a>(self)<dd><small><tt>Calculates&nbsp;the&nbsp;AdjustedTemporalScore&nbsp;and&nbsp;then&nbsp;calls&nbsp;setAdjustedTemporalScore<br>
+AdjustedTemporal&nbsp;=&nbsp;TemporalScore&nbsp;recomputed&nbsp;with&nbsp;the&nbsp;Impact&nbsp;sub-equation&nbsp;replaced&nbsp;with&nbsp;the&nbsp;following&nbsp;AdjustedImpact&nbsp;equation.</tt></small></dl>
+<dl><dt><a name="openCVSS-calcBaseScore"><strong>calcBaseScore</strong></a>(self)<dd><small><tt>Calculates&nbsp;the&nbsp;BaseScore&nbsp;and&nbsp;then&nbsp;calls&nbsp;setBaseScore<br>
+BaseScore&nbsp;=&nbsp;(.6*Impact&nbsp;+.4*Exploitability-1.5)*f(Impact)</tt></small></dl>
+<dl><dt><a name="openCVSS-calcEnviromentalScore"><strong>calcEnviromentalScore</strong></a>(self)<dd><small><tt>Calculates&nbsp;the&nbsp;EnviromentalScore&nbsp;by&nbsp;calling&nbsp;several&nbsp;"adjusted"&nbsp;functions<br>
+After&nbsp;calculation&nbsp;setEnviromentalScore&nbsp;is&nbsp;called<br>
+EnvironmentalScore=(AdjustedTemporal+(10-AdjustedTemporal)*CollateralDamagePotential)&nbsp;*&nbsp;TargetDistribution</tt></small></dl>
+<dl><dt><a name="openCVSS-calcExploitabilityScore"><strong>calcExploitabilityScore</strong></a>(self)<dd><small><tt>Calculates&nbsp;the&nbsp;ExploitabilityScore&nbsp;and&nbsp;then&nbsp;calls&nbsp;setExploitabilityScore<br>
+Exploitability&nbsp;=&nbsp;20*AccessComplexity*Authentication*AccessVector</tt></small></dl>
+<dl><dt><a name="openCVSS-calcImpactScore"><strong>calcImpactScore</strong></a>(self)<dd><small><tt>Calculates&nbsp;the&nbsp;ImpactScore&nbsp;and&nbsp;then&nbsp;calls&nbsp;setImpactScore<br>
+Impact&nbsp;=&nbsp;10.41*(1-(1-ConfImpact)(1-IntegImpact)*(1-AvailImpact))</tt></small></dl>
+<dl><dt><a name="openCVSS-calcTemporalScore"><strong>calcTemporalScore</strong></a>(self)<dd><small><tt>Calculates&nbsp;the&nbsp;TemporalScore&nbsp;and&nbsp;then&nbsp;calls&nbsp;setTemporalScore<br>
+TemporalScore=BaseScore*Exploitability*RemediationLevel*ReportConfidence</tt></small></dl>
+<dl><dt><a name="openCVSS-calculate"><strong>calculate</strong></a>(self)<dd><small><tt>Calculate&nbsp;all&nbsp;the&nbsp;values&nbsp;that&nbsp;were&nbsp;defined&nbsp;in&nbsp;the&nbsp;scores&nbsp;function<br>
+Calculations&nbsp;are&nbsp;made&nbsp;based&nbsp;on&nbsp;the&nbsp;latest&nbsp;CVSS&nbsp;scores.<br>
+<a href="http://nvd.nist.gov/cvsseq2.htm">http://nvd.nist.gov/cvsseq2.htm</a></tt></small></dl>
+<dl><dt><a name="openCVSS-decideImpacter"><strong>decideImpacter</strong></a>(self, anyImpactScore)<dd><small><tt>Decide&nbsp;what&nbsp;the&nbsp;impacter&nbsp;is&nbsp;based&nbsp;on&nbsp;the&nbsp;incoming&nbsp;impact&nbsp;score,&nbsp;then&nbsp;return.<br>
+Mimics&nbsp;-&nbsp;f(Impact)&nbsp;=&nbsp;0&nbsp;if&nbsp;Impact=0;&nbsp;1.176&nbsp;otherwise</tt></small></dl>
+<dl><dt><a name="openCVSS-displayResults"><strong>displayResults</strong></a>(self)<dd><small><tt>print&nbsp;the&nbsp;results&nbsp;from&nbsp;the&nbsp;calculations</tt></small></dl>
+<dl><dt><a name="openCVSS-getAC"><strong>getAC</strong></a>(self)<dd><small><tt>get&nbsp;AC&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getAI"><strong>getAI</strong></a>(self)<dd><small><tt>get&nbsp;AI&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getAR"><strong>getAR</strong></a>(self)<dd><small><tt>get&nbsp;AR&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getAU"><strong>getAU</strong></a>(self)<dd><small><tt>get&nbsp;AU&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getAV"><strong>getAV</strong></a>(self)<dd><small><tt>get&nbsp;AV&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getAdjustedBaseScore"><strong>getAdjustedBaseScore</strong></a>(self)<dd><small><tt>get&nbsp;AdjustedBaseScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getAdjustedImpactScore"><strong>getAdjustedImpactScore</strong></a>(self)<dd><small><tt>get&nbsp;AdjustedImpactScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getAdjustedTemporalScore"><strong>getAdjustedTemporalScore</strong></a>(self)<dd><small><tt>get&nbsp;AdjustedTemporalScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getBaseScore"><strong>getBaseScore</strong></a>(self)<dd><small><tt>get&nbsp;BaseScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getCD"><strong>getCD</strong></a>(self)<dd><small><tt>get&nbsp;CD&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getCI"><strong>getCI</strong></a>(self)<dd><small><tt>get&nbsp;CI&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getCR"><strong>getCR</strong></a>(self)<dd><small><tt>get&nbsp;CR&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getEX"><strong>getEX</strong></a>(self)<dd><small><tt>get&nbsp;EX&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getEnviromentalScore"><strong>getEnviromentalScore</strong></a>(self)<dd><small><tt>get&nbsp;EnviromentalScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getExploitabilityScore"><strong>getExploitabilityScore</strong></a>(self)<dd><small><tt>get&nbsp;ExploitabilityScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getII"><strong>getII</strong></a>(self)<dd><small><tt>get&nbsp;II&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getIR"><strong>getIR</strong></a>(self)<dd><small><tt>get&nbsp;IR&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getImpactScore"><strong>getImpactScore</strong></a>(self)<dd><small><tt>get&nbsp;ImpactScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getRC"><strong>getRC</strong></a>(self)<dd><small><tt>get&nbsp;RC&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getRL"><strong>getRL</strong></a>(self)<dd><small><tt>get&nbsp;RL&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getTD"><strong>getTD</strong></a>(self)<dd><small><tt>get&nbsp;TD&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-getTemporalScore"><strong>getTemporalScore</strong></a>(self)<dd><small><tt>get&nbsp;TemporalScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-info"><strong>info</strong></a>(self)<dd><small><tt>Print&nbsp;a&nbsp;banner&nbsp;on&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;screen.&nbsp;Functions&nbsp;as&nbsp;nothing&nbsp;more&nbsp;than&nbsp;an&nbsp;add-on</tt></small></dl>
+<dl><dt><a name="openCVSS-scores"><strong>scores</strong></a>(self, AV, AC, AU, CI, II, AI, EX, RL, RC, CD, TD, CR, IR, AR)<dd><small><tt>scores&nbsp;takes&nbsp;in&nbsp;14&nbsp;arguments&nbsp;representing&nbsp;several&nbsp;aspects&nbsp;of&nbsp;what&nbsp;make&nbsp;up&nbsp;a&nbsp;CVSS&nbsp;score</tt></small></dl>
+<dl><dt><a name="openCVSS-setAC"><strong>setAC</strong></a>(self, AC)<dd><small><tt>set&nbsp;AC&nbsp;to&nbsp;a&nbsp;value&nbsp;or&nbsp;throw&nbsp;exception</tt></small></dl>
+<dl><dt><a name="openCVSS-setAI"><strong>setAI</strong></a>(self, AI)<dd><small><tt>set&nbsp;AI&nbsp;to&nbsp;a&nbsp;value&nbsp;or&nbsp;throw&nbsp;exception</tt></small></dl>
+<dl><dt><a name="openCVSS-setAR"><strong>setAR</strong></a>(self, AR)<dd><small><tt>set&nbsp;AR&nbsp;to&nbsp;a&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setAU"><strong>setAU</strong></a>(self, AU)<dd><small><tt>set&nbsp;AU&nbsp;to&nbsp;a&nbsp;value&nbsp;or&nbsp;throw&nbsp;exception</tt></small></dl>
+<dl><dt><a name="openCVSS-setAV"><strong>setAV</strong></a>(self, AV)<dd><small><tt>set&nbsp;AV&nbsp;to&nbsp;a&nbsp;value&nbsp;or&nbsp;throw&nbsp;exception</tt></small></dl>
+<dl><dt><a name="openCVSS-setAdjustedBaseScore"><strong>setAdjustedBaseScore</strong></a>(self, adjustedBaseScoreCalculated)<dd><small><tt>set&nbsp;AdjustedBaseScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setAdjustedImpactScore"><strong>setAdjustedImpactScore</strong></a>(self, adjustedImpactScoreCalculated)<dd><small><tt>set&nbsp;AdjustedImpactScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setAdjustedTemporalScore"><strong>setAdjustedTemporalScore</strong></a>(self, adjustedTemporalScoreCalculated)<dd><small><tt>set&nbsp;AdjustedTemporalScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setBaseScore"><strong>setBaseScore</strong></a>(self, baseScoreCalculated)<dd><small><tt>set&nbsp;BaseScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setCD"><strong>setCD</strong></a>(self, CD)<dd><small><tt>set&nbsp;CD&nbsp;to&nbsp;a&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setCI"><strong>setCI</strong></a>(self, CI)<dd><small><tt>set&nbsp;CI&nbsp;to&nbsp;a&nbsp;value&nbsp;or&nbsp;throw&nbsp;exception</tt></small></dl>
+<dl><dt><a name="openCVSS-setCR"><strong>setCR</strong></a>(self, CR)<dd><small><tt>set&nbsp;CR&nbsp;to&nbsp;a&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setEX"><strong>setEX</strong></a>(self, EX)<dd><small><tt>set&nbsp;EX&nbsp;to&nbsp;a&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setEnviromentalScore"><strong>setEnviromentalScore</strong></a>(self, enviromentalScoreCalculated)<dd><small><tt>set&nbsp;EnviromentalScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setExploitabilityScore"><strong>setExploitabilityScore</strong></a>(self, exploitabilityScoreCalculated)<dd><small><tt>set&nbsp;ExploitabilityScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setII"><strong>setII</strong></a>(self, II)<dd><small><tt>set&nbsp;II&nbsp;to&nbsp;a&nbsp;value&nbsp;or&nbsp;throw&nbsp;exception</tt></small></dl>
+<dl><dt><a name="openCVSS-setIR"><strong>setIR</strong></a>(self, IR)<dd><small><tt>set&nbsp;IR&nbsp;to&nbsp;a&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setImpactScore"><strong>setImpactScore</strong></a>(self, impactScoreCalculated)<dd><small><tt>set&nbsp;ImpactScore&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setRC"><strong>setRC</strong></a>(self, RC)<dd><small><tt>set&nbsp;RC&nbsp;to&nbsp;a&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setRL"><strong>setRL</strong></a>(self, RL)<dd><small><tt>set&nbsp;RL&nbsp;to&nbsp;a&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setTD"><strong>setTD</strong></a>(self, TD)<dd><small><tt>set&nbsp;TD&nbsp;to&nbsp;a&nbsp;value</tt></small></dl>
+<dl><dt><a name="openCVSS-setTemporalScore"><strong>setTemporalScore</strong></a>(self, temporalScoreCalculated)<dd><small><tt>set&nbsp;TemporalScore&nbsp;value</tt></small></dl>
+</td></tr></table></td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'Brandon Dixon'<br>
+<strong>__date__</strong> = '12/16/08'<br>
+<strong>__email__</strong> = 'brandon.s.dixon@gmail.com'<br>
+<strong>__file__</strong> = '.\\openCVSS-1_3.py'<br>
+<strong>__name__</strong> = 'openCVSS-1_3'<br>
+<strong>__package__</strong> = None<br>
+<strong>__version__</strong> = '1.3'<br>
+<strong>__website__</strong> = 'http://www.dueyesterday.net'<br>
+<strong>accessComplexityValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029D3328&gt;<br>
+<strong>accessVectorValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029D3350&gt;<br>
+<strong>authenticationValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029D3300&gt;<br>
+<strong>availabilityImpactValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029D30F8&gt;<br>
+<strong>availabilityRequirementValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029CEDF0&gt;<br>
+<strong>badVar</strong> = 'Variable entered is incorrect'<br>
+<strong>collateralDamageValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029CEC88&gt;<br>
+<strong>confidentialityImpactValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029D3238&gt;<br>
+<strong>confidentialityRequirementValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029CED78&gt;<br>
+<strong>exploitabilityValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029D30D0&gt;<br>
+<strong>integrityImpactValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029D3210&gt;<br>
+<strong>integrityRequirementValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029CEDC8&gt;<br>
+<strong>myCVSS</strong> = &lt;openCVSS-1_3.openCVSS instance at 0x029D3378&gt;<br>
+<strong>remediationLevelValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029CE3A0&gt;<br>
+<strong>reportConfidenceValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029CEBE8&gt;<br>
+<strong>targetDistributionValues</strong> = &lt;openCVSS-1_3.Struct instance at 0x029CECD8&gt;</td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%">Brandon&nbsp;Dixon</td></tr></table>
